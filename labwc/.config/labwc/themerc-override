@@ -2,11 +2,11 @@
 # General Settings
 # ------------------
 border.width: 1
-border.color: #6e5d0e33
+border.color: #313244
 padding.height: 4
-corner.radius: 0
-window.titlebar.padding.height: 2
-window.titlebar.padding.width: 5
+corner.radius: 8
+window.titlebar.padding.height: 4
+window.titlebar.padding.width: 6
 window.label.text.justify: center
 
 # --------------------
@@ -14,37 +14,36 @@ window.label.text.justify: center
 # ---------------------
 window.button.height: 20
 window.button.width: 28
-window.button.spacing: 0
+window.button.spacing: 2
 
 # ---------------------
 # Active Window
 # ---------------------
-window.active.title.bg.color: #fff9ee
-window.active.label.text.color: #1e1b13
+window.active.title.bg.color: #1e1e2e
+window.active.label.text.color: #cdd6f4
 
 
 # ----------------------
 # Inactive Window
 # ----------------------
-window.inactive.title.bg.color: #fff9ee
-window.inactive.label.text.color: #1e1b13
+window.inactive.title.bg.color: #181825
+window.inactive.label.text.color: #a6adc8
 
 # -----------------------
 # Menu
 # -----------------------
-menu.items.bg.color: #fff9ee
-menu.items.text.color: #1e1b13
-menu.items.active.bg.color: #f9e287
-#menu.items.active.bg.color: #e9e2d4
-menu.items.active.text.color: #1e1b13
+menu.items.bg.color: #1e1e2ee6
+menu.items.text.color: #cdd6f4
+menu.items.active.bg.color: #cba6f7
+menu.items.active.text.color: #11111b
 menu.border.width: 1
-menu.border.color: #6e5d0e33
+menu.border.color: #313244
 menu.separator.width: 1
 menu.separator.padding.width: 6
 menu.separator.padding.height: 3
-menu.separator.color: #6e5d0e
-menu.items.padding.x: 6
-menu.items.padding.y: 4
+menu.separator.color: #313244
+menu.items.padding.x: 8
+menu.items.padding.y: 6
 menu.width.min: 140
 menu.width.max: 300
 menu.overlap.x: -4
@@ -53,8 +52,8 @@ menu.overlap.y: 0
 # ----------------------------
 # On-Screen Display (OSD)
 # ----------------------------
-osd.bg.color: #fff9ee
-osd.label.text.color: #6e5d0e
+osd.bg.color: #1e1e2ee6
+osd.label.text.color: #cdd6f4
 osd.border.width: 1
 osd.window-switcher.width: 800
 osd.window-switcher.padding: 8
@@ -62,9 +61,9 @@ osd.window-switcher.item.padding.x: 12
 osd.window-switcher.item.padding.y: 12
 osd.window-switcher.item.active.border.width: 1
 osd.window-switcher.preview.border.width: 2
-osd.window-switcher.preview.border.color: #6e5d0e
+osd.window-switcher.preview.border.color: #cba6f7
 osd.workspace-switcher.boxes.width: 150
 osd.workspace-switcher.boxes.height: 40
 osd.workspace-switcher.boxes.border.width: 1
-snapping.overlay.edge.bg.color: #6e5d0e80
-snapping.overlay.region.bg.color: #6e5d0e80
+snapping.overlay.edge.bg.color: #cba6f780
+snapping.overlay.region.bg.color: #cba6f780

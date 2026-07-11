@@ -21,6 +21,11 @@
                     <command>mpv --player-operation-mode=pseudo-gui --</command>
                 </action>
             </item>
+            <item label="Spotify" icon="/usr/share/pixmaps/spotify-client.png">
+                <action name="Execute">
+                    <command>spotify --uri=</command>
+                </action>
+            </item>
             <item label="Volume Control" icon="/usr/share/icons/Papirus-Dark/48x48/categories/org.pulseaudio.pavucontrol.svg">
                 <action name="Execute">
                     <command>pavucontrol</command>
@@ -68,16 +73,6 @@
             <item label="Alacritty" icon="/usr/share/pixmaps/Alacritty.svg">
                 <action name="Execute">
                     <command>alacritty</command>
-                </action>
-            </item>
-            <item label="Ghostty" icon="/usr/share/icons/Papirus-Dark/48x48/categories/com.mitchellh.ghostty.svg">
-                <action name="Execute">
-                    <command>/usr/bin/ghostty --gtk-single-instance=true</command>
-                </action>
-            </item>
-            <item label="Hardware Locality Lstopo" icon="/usr/share/icons/Papirus-Dark/48x48/categories/hwloc.svg">
-                <action name="Execute">
-                    <command>lstopo</command>
                 </action>
             </item>
             <item label="Htop" icon="/usr/share/pixmaps/htop.png">
@@ -153,22 +148,5 @@
                 </action>
             </item>
         </menu> <!-- Utilities -->
-        <separator />
-        <item label="Terminal" icon="/usr/share/icons/hicolor/32x32/apps/com.mitchellh.ghostty.png">
-            <action name="Execute">
-                <command>ghostty</command>
-            </action>
-        </item>
-        <item label="Reconfigure" icon="/usr/share/icons/Papirus-Dark/48x48/apps/system-reboot.svg">
-            <action name="Reconfigure" />
-        </item>
-        <item label="Background" icon="/usr/share/icons/Papirus-Dark/48x48/apps/preferences-desktop-wallpaper.svg">
-            <action name="Execute">
-                <command>/home/codenamekt/.config/rofi/wallselect/wallselect.sh</command>
-            </action>
-        </item>
-        <item label="Exit" icon="/usr/share/icons/Papirus-Dark/48x48/apps/system-log-out.svg">
-            <action name="Exit" />
-        </item>
     </menu>
 </openbox_menu>
