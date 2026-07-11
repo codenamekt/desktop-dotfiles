@@ -4,7 +4,7 @@
     border: none;
     border-radius: 0;
     font-family: "JetBrains Mono", "Iosevka Term", Inter, Adwaita,  Roboto, Helvetica, Arial, sans-serif;
-    font-size: 13px;
+    font-size: 12px;
     min-height: 0;
 }
 
@@ -225,12 +225,12 @@ tooltip label {
 }
 /* Custom launcher & shortcut sizes */
 #custom-launcher {
-    font-size: 17px;
+    font-size: 15px;
 }
 #custom-firefox,
 #custom-terminal,
 #custom-code,
 #custom-music,
 #custom-thunar {
-    font-size: 16px;
+    font-size: 14px;
 }

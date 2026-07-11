@@ -104,6 +104,14 @@ configuration {
     }
 
 	/*---------- Keybindings ----------*/
+	kb-mode-next: "Tab";
+	kb-mode-previous: "Shift+Tab,Shift+ISO_Left_Tab";
+	kb-row-tab: "";
+	kb-row-down: "Down,Control+n";
+	kb-row-up: "Up,Control+p";
+	kb-mode-complete: "Control+l";
+	kb-element-next: "";
+	kb-element-prev: "";
 /*
 	kb-primary-paste: "Control+V,Shift+Insert";
 	kb-secondary-paste: "Control+v,Insert";

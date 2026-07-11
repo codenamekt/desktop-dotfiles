@@ -4,7 +4,7 @@
     border: none;
     border-radius: 0;
     font-family: "JetBrains Mono", "Iosevka Term", Inter, Adwaita,  Roboto, Helvetica, Arial, sans-serif;
-    font-size: 13px;
+    font-size: 12px;
     min-height: 0;
 }
 
@@ -51,7 +51,7 @@ tooltip label {
     background: @module_bg;
     color: @module_fg;
     padding: 0px 10px;
-    margin: 4px 0px 4px 0px;
+    margin: 2px 0px 2px 0px;
     border-radius: 0px;
     transition: all 0.3s ease;
 }
@@ -142,7 +142,7 @@ tooltip label {
 /* --- Taskbar --- */
 #taskbar {
     background: @module_bg;
-    margin: 4px;
+    margin: 2px;
     padding: 2px;
     border-radius: 99px;
 }
@@ -220,12 +220,12 @@ tooltip label {
 }
 /* Custom launcher & shortcut sizes */
 #custom-launcher {
-    font-size: 17px;
+    font-size: 15px;
 }
 #custom-firefox,
 #custom-terminal,
 #custom-code,
 #custom-music,
 #custom-thunar {
-    font-size: 16px;
+    font-size: 14px;
 }
