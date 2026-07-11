@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openbox_menu >
+    <menu id="root-menu" label="Applications">
+        <menu id="Graphics" label="Graphics" icon="/usr/share/icons/Papirus-Dark/48x48/categories/applications-graphics.svg">
+            <item label="Swayimg" icon="/usr/share/icons/hicolor/64x64/apps/swayimg.png">
+                <action name="Execute">
+                    <command>swayimg</command>
+                </action>
+            </item>
+        </menu> <!-- Graphics -->
+        <menu id="Internet" label="Internet" icon="/usr/share/icons/Papirus-Dark/48x48/categories/applications-internet.svg">
+            <item label="Firefox" icon="/usr/share/icons/Papirus-Dark/48x48/categories/firefox.svg">
+                <action name="Execute">
+                    <command>/usr/lib/firefox/firefox</command>
+                </action>
+            </item>
+        </menu> <!-- Internet -->
+        <menu id="Multimedia" label="Multimedia" icon="/usr/share/icons/Papirus-Dark/48x48/categories/applications-multimedia.svg">
+            <item label="Mpv Media Player" icon="/usr/share/icons/Papirus-Dark/48x48/categories/mpv.svg">
+                <action name="Execute">
+                    <command>mpv --player-operation-mode=pseudo-gui --</command>
+                </action>
+            </item>
+            <item label="Volume Control" icon="/usr/share/icons/Papirus-Dark/48x48/categories/org.pulseaudio.pavucontrol.svg">
+                <action name="Execute">
+                    <command>pavucontrol</command>
+                </action>
+            </item>
+        </menu> <!-- Multimedia -->
+        <menu id="Settings" label="Settings" icon="/usr/share/icons/Papirus-Dark/48x48/categories/mate-preferences-desktop-display.svg">
+            <item label="Advanced Network Configuration" icon="/usr/share/icons/Papirus-Dark/48x48/categories/preferences-system-network.svg">
+                <action name="Execute">
+                    <command>nm-connection-editor</command>
+                </action>
+            </item>
+            <item label="Manage Printing" icon="/usr/share/icons/Papirus-Dark/48x48/categories/cups.svg">
+                <action name="Execute">
+                    <command>xdg-open http://localhost:631/</command>
+                </action>
+            </item>
+            <item label="Print Settings" icon="/usr/share/icons/Papirus-Dark/48x48/categories/printer.svg">
+                <action name="Execute">
+                    <command>system-config-printer</command>
+                </action>
+            </item>
+            <item label="Qt5 Settings" icon="/usr/share/icons/Papirus-Dark/48x48/categories/preferences-desktop-theme.svg">
+                <action name="Execute">
+                    <command>qt5ct</command>
+                </action>
+            </item>
+            <item label="Qt6 Settings" icon="/usr/share/icons/Papirus-Dark/48x48/categories/preferences-desktop-theme.svg">
+                <action name="Execute">
+                    <command>qt6ct</command>
+                </action>
+            </item>
+            <item label="Thunar Preferences" icon="/usr/share/icons/Papirus-Dark/48x48/categories/org.xfce.thunar.svg">
+                <action name="Execute">
+                    <command>thunar-settings</command>
+                </action>
+            </item>
+            <item label="Volume Control" icon="/usr/share/icons/Papirus-Dark/48x48/categories/org.pulseaudio.pavucontrol.svg">
+                <action name="Execute">
+                    <command>pavucontrol</command>
+                </action>
+            </item>
+        </menu> <!-- Settings -->
+        <menu id="System" label="System" icon="/usr/share/icons/Papirus-Dark/48x48/categories/applications-system.svg">
+            <item label="Alacritty" icon="/usr/share/pixmaps/Alacritty.svg">
+                <action name="Execute">
+                    <command>alacritty</command>
+                </action>
+            </item>
+            <item label="Ghostty" icon="/usr/share/icons/Papirus-Dark/48x48/categories/com.mitchellh.ghostty.svg">
+                <action name="Execute">
+                    <command>/usr/bin/ghostty --gtk-single-instance=true</command>
+                </action>
+            </item>
+            <item label="Hardware Locality Lstopo" icon="/usr/share/icons/Papirus-Dark/48x48/categories/hwloc.svg">
+                <action name="Execute">
+                    <command>lstopo</command>
+                </action>
+            </item>
+            <item label="Htop" icon="/usr/share/pixmaps/htop.png">
+                <action name="Execute">
+                    <command>ghostty -e htop</command>
+                </action>
+            </item>
+            <item label="Manage Printing" icon="/usr/share/icons/Papirus-Dark/48x48/categories/cups.svg">
+                <action name="Execute">
+                    <command>xdg-open http://localhost:631/</command>
+                </action>
+            </item>
+            <item label="Print Settings" icon="/usr/share/icons/Papirus-Dark/48x48/categories/printer.svg">
+                <action name="Execute">
+                    <command>system-config-printer</command>
+                </action>
+            </item>
+            <item label="Task Manager" icon="/usr/share/icons/Papirus-Dark/48x48/categories/org.xfce.taskmanager.svg">
+                <action name="Execute">
+                    <command>xfce4-taskmanager</command>
+                </action>
+            </item>
+            <item label="Thunar File Manager" icon="/usr/share/icons/Papirus-Dark/48x48/categories/org.xfce.thunar.svg">
+                <action name="Execute">
+                    <command>thunar</command>
+                </action>
+            </item>
+        </menu> <!-- System -->
+        <menu id="Utilities" label="Utilities" icon="/usr/share/icons/Papirus-Dark/48x48/categories/applications-utilities.svg">
+            <item label="About Xfce" icon="/usr/share/icons/Papirus-Dark/48x48/categories/org.xfce.about.svg">
+                <action name="Execute">
+                    <command>xfce4-about</command>
+                </action>
+            </item>
+            <item label="Bulk Rename" icon="/usr/share/icons/Papirus-Dark/48x48/categories/org.xfce.thunar.svg">
+                <action name="Execute">
+                    <command>thunar --bulk-rename</command>
+                </action>
+            </item>
+            <item label="Gammastep" icon="/usr/share/icons/Papirus-Dark/48x48/categories/gammastep.svg">
+                <action name="Execute">
+                    <command>ghostty -e gammastep</command>
+                </action>
+            </item>
+            <item label="Gammastep Indicator" icon="/usr/share/icons/Papirus-Dark/48x48/categories/gammastep.svg">
+                <action name="Execute">
+                    <command>gammastep-indicator</command>
+                </action>
+            </item>
+            <item label="Pinentry" icon="/usr/share/pixmaps/pinentry.png">
+                <action name="Execute">
+                    <command>/usr/bin/pinentry-qt</command>
+                </action>
+            </item>
+            <item label="Task Manager" icon="/usr/share/icons/Papirus-Dark/48x48/categories/org.xfce.taskmanager.svg">
+                <action name="Execute">
+                    <command>xfce4-taskmanager</command>
+                </action>
+            </item>
+            <item label="Vim" icon="/usr/share/icons/Papirus-Dark/48x48/categories/gvim.svg">
+                <action name="Execute">
+                    <command>ghostty -e vim</command>
+                </action>
+            </item>
+            <item label="Xgps" icon="/usr/share/gpsd/icons/gpsd-logo.png">
+                <action name="Execute">
+                    <command>xgps</command>
+                </action>
+            </item>
+            <item label="Xgpsspeed" icon="/usr/share/gpsd/icons/gpsd-logo.png">
+                <action name="Execute">
+                    <command>xgpsspeed</command>
+                </action>
+            </item>
+        </menu> <!-- Utilities -->
+        <separator />
+        <item label="Terminal" icon="/usr/share/icons/hicolor/32x32/apps/com.mitchellh.ghostty.png">
+            <action name="Execute">
+                <command>ghostty</command>
+            </action>
+        </item>
+        <item label="Reconfigure" icon="/usr/share/icons/Papirus-Dark/48x48/apps/system-reboot.svg">
+            <action name="Reconfigure" />
+        </item>
+        <item label="Background" icon="/usr/share/icons/Papirus-Dark/48x48/apps/preferences-desktop-wallpaper.svg">
+            <action name="Execute">
+                <command>/home/codenamekt/.config/rofi/wallselect/wallselect.sh</command>
+            </action>
+        </item>
+        <item label="Exit" icon="/usr/share/icons/Papirus-Dark/48x48/apps/system-log-out.svg">
+            <action name="Exit" />
+        </item>
+    </menu>
+</openbox_menu>

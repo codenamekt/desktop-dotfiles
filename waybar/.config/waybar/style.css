@@ -1,0 +1,16 @@
+/** Main waybar css **/
+ 
+
+/** Imports a color scheme from colors directory **/
+@import "colors/cyberpunk.css";
+
+
+ 
+/** Imports a layout (style) for bar **/
+@import "layouts/pill.css";
+
+
+/** Sets bar background transparency **/
+window#waybar {
+            background: alpha(@bar_bg, 0.3);
+}

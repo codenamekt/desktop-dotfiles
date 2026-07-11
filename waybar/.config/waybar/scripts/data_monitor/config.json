@@ -1,0 +1,5 @@
+{
+    "reset_day": 30,
+    "limit_monthly_gb": 800,
+    "limit_daily_gb": 10
+}

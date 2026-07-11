@@ -1,0 +1,14 @@
+*.log
+.DS_Store
+*.pid
+*.pyc
+__pycache__/
+*.state
+**/usage.json
+**/alarms.json
+**/countdown.json
+**/todo.json
+**/state.json
+**/pin_state.json
+**/alarm_daemon.pid
+**/monitor.pid
