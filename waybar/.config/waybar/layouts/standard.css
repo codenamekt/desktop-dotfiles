@@ -244,3 +244,14 @@ tooltip label {
         color: @bar_bg;
     }
 }
+/* Custom launcher & shortcut sizes */
+#custom-launcher {
+    font-size: 17px;
+}
+#custom-firefox,
+#custom-terminal,
+#custom-code,
+#custom-music,
+#custom-thunar {
+    font-size: 16px;
+}

@@ -206,7 +206,7 @@
 
       "custom/launcher":
       {
-          "format": "<span size='xx-large'></span>\u00a0",
+          "format": "",
           "tooltip": true,
           "tooltip-format": "Menu\nRight click to customize",
           "on-click": "killall rofi 2>/dev/null || bash ~/.config/rofi/launchers/launcher.sh 2>/dev/null",
