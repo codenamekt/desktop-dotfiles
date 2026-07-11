@@ -19,8 +19,8 @@
       //                                         //
       /////////////////////////////////////////////
 
-      "modules-left": ["custom/launcher", "custom/chrome", "custom/terminal", "custom/code",
-			 "custom/music", "custom/thunar", "custom/todo", "custom/pins"],
+      "modules-left": ["custom/launcher", "custom/firefox", "custom/terminal", "custom/code",
+			 "custom/music", "custom/thunar"],
 
       "modules-center": ["wlr/taskbar"],
 
@@ -145,27 +145,7 @@
 
       //// Custom Module 
 
-      "custom/todo":
-      {
-          "format": "\u00a0{}",
-          "exec": "~/.config/waybar/scripts/todo/todo.sh",
-          "on-double-click": "~/.config/waybar/scripts/todo/todo.sh --mark-done",
-          "on-click-right": "killall rofi || bash ~/.config/waybar/scripts/todo/todo.sh --show-rofi",
-          "on-click-middle": "~/.config/waybar/scripts/todo/todo.sh --middle-click",
-          "return-type": "json",
-          "interval": 5,
-          "tooltip": true
-      },
 
-      "custom/pins":
-      {
-          "exec": "bash ~/.config/waybar/scripts/pin_notes/pin_notes.sh",
-          "return-type": "json",
-          "format": "{}",
-          "on-click": "xdg-open ~/pins",
-          "on-scroll-up": "bash ~/.config/waybar/scripts/pin_notes/pin_notes.sh --up",
-          "on-scroll-down": "bash ~/.config/waybar/scripts/pin_notes/pin_notes.sh --down"
-      },
 
       "custom/countdown":
       {
@@ -226,21 +206,20 @@
 
       "custom/launcher":
       {
-          "format": "<big>\u00a0</big>",
+          "format": "<span size='xx-large'></span>\u00a0",
           "tooltip": true,
           "tooltip-format": "Menu\nRight click to customize",
           "on-click": "killall rofi 2>/dev/null || bash ~/.config/rofi/launchers/launcher.sh 2>/dev/null",
           "on-click-right": "killall rofi 2>/dev/null || bash ~/.config/waybar/scripts/customize.sh 2>/dev/null"
       },
 
-      "custom/chrome":
+      "custom/firefox":
       {
-          "format": "",
+          "format": "",
           "tooltip": true,
-          "tooltip-format": "Browser",
-          "on-click": "google-chrome-stable",
-          "on-click-right": "thorium-browser",
-          "on-click-middle": "brave"
+          "tooltip-format": "Firefox Browser",
+          "on-click": "firefox",
+          "on-click-right": "firefox --private-window"
       },
 
       "custom/terminal":
@@ -248,8 +227,8 @@
           "format": "",
           "tooltip": true,
           "tooltip-format": "Terminal",
-          "on-click": "xfce4-terminal",
-          "on-click-right": "foot"
+          "on-click": "alacritty",
+          "on-click-right": "ghostty"
       },
 
       "custom/code":

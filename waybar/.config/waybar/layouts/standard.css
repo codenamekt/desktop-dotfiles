@@ -50,7 +50,7 @@ tooltip label {
 /* --- Modules: Strip --- */
 #backlight,
 #pulseaudio,
-#custom-chrome,
+#custom-firefox,
 #custom-terminal,
 #custom-code,
 #custom-music,
@@ -75,7 +75,7 @@ tooltip label {
     margin-left: 2px;
 }
 
-#custom-chrome,
+#custom-firefox,
 #pulseaudio,
 #custom-timer {
     margin-left: 2px;
@@ -142,7 +142,7 @@ tooltip label {
 #custom-theme-switcher:hover,
 #idle_inhibitor:hover,
 #custom-launcher:hover,
-#custom-chrome:hover,
+#custom-firefox:hover,
 #custom-terminal:hover,
 #custom-code:hover,
 #custom-music:hover,

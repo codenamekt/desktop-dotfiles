@@ -28,7 +28,7 @@ tooltip label {
 #clock,
 #custom-clock,
 #network,
-#custom-chrome,
+#custom-firefox,
 #custom-terminal,
 #custom-code,
 #custom-music,
@@ -67,7 +67,7 @@ tooltip label {
 
 #custom-power,
 #custom-todo,
-#custom-chrome {
+#custom-firefox {
     margin-left: 2px;
 }
 
@@ -117,7 +117,7 @@ tooltip label {
 #custom-taskmanager:hover,
 #custom-theme-switcher:hover,
 #idle_inhibitor:hover,
-#custom-chrome:hover,
+#custom-firefox:hover,
 #custom-terminal:hover,
 #custom-code:hover,
 #custom-music:hover,

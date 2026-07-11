@@ -2,12 +2,12 @@
  
 
 /** Imports a color scheme from colors directory **/
-@import "colors/cyberpunk.css";
+@import "colors/catppuccin.css";
 
 
  
 /** Imports a layout (style) for bar **/
-@import "layouts/pill.css";
+@import "layouts/outline.css";
 
 
 /** Sets bar background transparency **/
