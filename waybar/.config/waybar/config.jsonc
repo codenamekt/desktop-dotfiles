@@ -20,13 +20,13 @@
       /////////////////////////////////////////////
 
       "modules-left": ["custom/launcher", "custom/firefox", "custom/terminal", "custom/code",
-			 "custom/music", "custom/thunar"],
+			 "custom/thunar"],
 
       "modules-center": ["wlr/taskbar"],
 
-      "modules-right": ["keyboard-state", "custom/timer", "custom/countdown", "custom/data-monitor", "memory",  
-		         "group/group-tools", "pulseaudio", "backlight", "network", "tray", 
-                          "custom/notification", "custom/clock", "custom/power"],
+      "modules-right": ["keyboard-state", "custom/data-monitor", "cpu", "memory",  
+		         "custom/clip", "custom/snip", "backlight", "tray", 
+                          "custom/notification", "custom/clock", "pulseaudio", "custom/power"],
 
       //// Waybar Modules Configuration
 
@@ -49,16 +49,6 @@
           {
               "locked": " Caps ",
               "unlocked": ""
-          }
-      },
-
-      "idle_inhibitor":
-      {
-          "format": "{icon}",
-          "format-icons":
-          {
-              "activated": "",
-              "deactivated": ""
           }
       },
 
@@ -119,6 +109,15 @@
           "on-click-middle": "pavucontrol"
       },
 
+      "cpu":
+      {
+          "interval": 10,
+          "format": "<big>󰻠</big>\u00a0\u00a0{usage}%",
+          "tooltip": true,
+          "tooltip-format": "<tt><b>CPU:</b> {usage}% peak  ·  {average}% avg\n<b>Load (1/5/15 min):</b> {min1}  {min5}  {min15}\n────────────────────────\n{core0}%   {core1}%   {core2}%   {core3}%\n{core4}%   {core5}%   {core6}%   {core7}%\n{core8}%   {core9}%   {core10}%   {core11}%\n{core12}%   {core13}%   {core14}%   {core15}%</tt>",
+          "on-click": "xfce4-taskmanager"
+      },
+
       "memory":
       {
           "interval": 30,
@@ -126,49 +125,11 @@
           "tooltip-format": "Memory: {used:0.1f}G/{total:0.1f}G\nPercentage: {percentage}% used\nAvailable: {avail}G\nSwap: {swapUsed:0.1f}G/{swapTotal:0.1f}G",
           "on-click": "xfce4-taskmanager"
       },
-
-      "network":
-      {
-          "format-wifi": "{icon}",
-          "format-ethernet": "",
-          "format-linked": "",
-          "format-disconnected": "󱛅 ",
-          "format-disabled": "󱚼 ",
-          "tooltip-format": "{ifname} via {gwaddr}",
-          "tooltip-format-wifi": "  {essid} ({signalStrength}%)\nIP: {ipaddr}\nFreq: {frequency}GHz",
-          "tooltip-format-ethernet": "  {ifname}\nIP: {ipaddr}/{cidr}",
-          "tooltip-format-disconnected": "Disconnected",
-          "format-icons": ["󰤯 ", "󰤟 ", "󰤢 ", "󰤥 ", "󰤨 "],
-          "on-click": "killall rofi || bash ~/.config/rofi/wifi/wifi.sh",
-          "on-click-right": "nm-connection-editor"
-      },
-
       //// Custom Module 
 
 
 
-      "custom/countdown":
-      {
-          "exec": "~/.config/waybar/scripts/countdown/countdown.sh",
-          "return-type": "json",
-          "format": "{}",
-          "interval": 3600,
-          "on-click-right": "killall rofi || bash ~/.config/waybar/scripts/countdown/countdown.sh --show-rofi",
-          "on-scroll-up": "~/.config/waybar/scripts/countdown/countdown.sh --scroll-up",
-          "on-scroll-down": "~/.config/waybar/scripts/countdown/countdown.sh --scroll-down"
-      },
-
-      "custom/timer":
-      {
-          "exec": "python3 ~/.config/waybar/scripts/timer/waybar_timer.py --monitor",
-          "return-type": "json",
-          "format": "{}",
-          "on-click": "killall rofi || python3 ~/.config/waybar/scripts/timer/waybar_timer.py --current toggle-pause",
-          "on-click-right": "killall rofi || bash ~/.config/waybar/scripts/timer/time_input.sh",
-          "on-click-middle": "python3 ~/.config/waybar/scripts/timer/waybar_timer.py --current reset",
-          "on-scroll-up": "python3 ~/.config/waybar/scripts/timer/waybar_timer.py --toggle-view",
-          "on-scroll-down": "python3 ~/.config/waybar/scripts/timer/waybar_timer.py --toggle-view"
-      },
+      
 
       "custom/data-monitor":
       {
@@ -235,18 +196,10 @@
       {
           "format": "",
           "tooltip": true,
-          "tooltip-format": "Code Editor",
-          "on-click": "/opt/sublime_text/sublime_text"
+          "tooltip-format": "Obsidian",
+          "on-click": "obsidian"
       },
 
-      "custom/music":
-      {
-          "format": "",
-          "tooltip": true,
-          "tooltip-format": "Youtube",
-          "on-click": "killall rofi 2>/dev/null || python3 ~/.config/rofi/rofi-tube/rofi-tube.py 2>/dev/null",
-          "on-click-right": "g4music"
-      },
 
       "custom/thunar":
       {
@@ -257,24 +210,6 @@
       },
 
       //// Tools Section 
-
-      "group/group-tools":
-      {
-          "orientation": "inherit",
-          "drawer":
-          {
-              "transition-duration": 500,
-              "children-class": "other-apps",
-              "transition-left-to-right": false
-          },
-          "modules": [
-              "custom/clip",
-              "custom/snip",
-              "idle_inhibitor",
-              "custom/theme-switcher"
-          ]
-      },
-
       "custom/clip":
       {
           "format": "",
@@ -283,13 +218,7 @@
           "on-click": "killall rofi 2>/dev/null || bash ~/.config/rofi/clipboard/clipboard.sh 2>/dev/null"
       },
 
-      "custom/theme-switcher":
-      {
-          "format": "<big>󰔎\u00a0</big>",
-          "tooltip": true,
-          "tooltip-format": "Light/Dark",
-          "on-click": "bash ~/.config/waybar/scripts/toggle-theme.sh 2>/dev/null"
-      },
+      
 
       "custom/snip":
       {

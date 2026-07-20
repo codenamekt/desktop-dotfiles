@@ -18,7 +18,7 @@
     <dropShadows>no</dropShadows>
     <dropShadowsOnTiled>no</dropShadowsOnTiled>
     <theme>
-        <name>matugen-labwc</name>
+        <name>catppuccin-mocha-mauve-standard+default</name>
         <font name="Roboto" size="10" />
         <cornerRadius>8</cornerRadius>
     </theme>

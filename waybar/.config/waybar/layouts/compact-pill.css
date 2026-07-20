@@ -23,52 +23,12 @@ tooltip label {
     text-shadow: none;
 }
 
-/* --- Modules: Base --- */
-#custom-data-monitor,
-#clock,
-#custom-clock,
-#network,
-#custom-firefox,
-#custom-terminal,
-#custom-code,
-#custom-music,
-#custom-thunar,
-#custom-todo,
-#custom-countdown,
-#backlight,
-#pulseaudio,
-#memory,
-#custom-clip,
-#custom-snip,
-#custom-taskmanager,
-#custom-theme-switcher,
-#tray,
-#idle_inhibitor,
-#custom-power,
-#custom-launcher,
-#custom-notification,
-#custom-timer {
-    background: @module_bg;
-    color: @module_fg;
-    padding: 0px 10px;
-    margin: 2px 0px 2px 0px;
-    border-radius: 0px;
-    transition: all 0.3s ease;
-}
-
 #custom-notification {
    padding-left: 6px;
-}
-
-#custom-countdown {
-    margin-left: 1px;
 }
 #custom-launcher {
     color: @primary;
     margin-left: 2px;
-    border-radius: 99px 0px 0px 99px;
-}
-#custom-timer {
     border-radius: 99px 0px 0px 99px;
 }
 #custom-todo {
@@ -89,14 +49,14 @@ tooltip label {
 }
 #keyboard-state label.locked {
     background: @special;
-    color: @module_fg; 
+    color: @module_fg;
     padding: 0px 10px;
-    margin: 4px 4px 4px 0px;	
+    margin: 4px 4px 4px 0px;
     border-radius: 99px;
 }
 #network.disconnected,
 #network.disabled {
-    color: @power; 
+    color: @power;
 }
 
 /* --- Hover Effects --- */
@@ -107,11 +67,11 @@ tooltip label {
 #backlight:hover,
 #pulseaudio:hover,
 #memory:hover,
+#cpu:hover,
 #custom-clip:hover,
 #custom-snip:hover,
 #custom-taskmanager:hover,
 #custom-theme-switcher:hover,
-#idle_inhibitor:hover,
 #custom-firefox:hover,
 #custom-terminal:hover,
 #custom-code:hover,
@@ -125,13 +85,6 @@ tooltip label {
 #custom-launcher:hover {
     background: @hover_bg;
     color: @hover_fg;
-}
-
-#custom-todo:hover,
-#custom-countdown:hover,
-#custom-timer:hover {
-    background: @special;
-    color: @special_fg;
 }
 
 #custom-power:hover {
@@ -162,46 +115,9 @@ tooltip label {
     background: alpha(@hover_bg, 0.15);
 }
 
-
-/* -----------------------------------------------------------------------------
- * STATUS & ALERTS
- * -------------------------------------------------------------------------- */
-
-#custom-timer {
-    font-family: "JetBrainsMono Nerd Font", monospace;
-    font-weight: bold;
-}
-#custom-timer.running {
-    color: @primary;
-}
-#custom-timer.running:hover {
-    background: @hover_bg;
-    color: @hover_fg;
-}
-#custom-timer.paused {
-    color: @power;
-}
-
 /* Pending Tasks */
 #custom-todo.pending {
     color: @power;
-}
-#custom-todo.pending:hover,
-#custom-timer.paused:hover {
-    background: @power;
-    color: @bar_bg;
-}
-
-/* Critical Animations */
-#custom-timer.expired,
-#custom-countdown.expired {
-    background-color: @power;
-    color: @bar_bg;            
-    animation-name: blink-critical;
-    animation-duration: 2s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
 }
 
 @keyframes blink-critical {

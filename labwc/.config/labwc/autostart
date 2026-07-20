@@ -4,9 +4,6 @@ aplay -q ~/.config/labwc/sound/desktop-login.wav >/dev/null 2>&1 &
 # Device plugged audio
 bash ~/.config/labwc/device-monitor.sh >/dev/null 2>&1 &
 
-# Alarm Daemon
-~/.config/waybar/scripts/clock_calendar/alarm/alarm.sh start-daemon
-
 # Set background, prefer awww if available as it has better transitions 
 if command -v awww >/dev/null 2>&1; then
 	awww-daemon >/dev/null 2>&1 &
@@ -40,7 +37,7 @@ swayidle -w \
     timeout 300 "~/.config/labwc/idle/brightness_ctrl.sh --fade-out" \
     resume "~/.config/labwc/idle/brightness_ctrl.sh --fade-in" \
     timeout 600 "loginctl lock-session" \
-    timeout 1800 "systemctl suspend" \
+    timeout 1800 "loginctl suspend" \
     lock "~/.config/labwc/idle/lock_ctrl.sh" \
     before-sleep "~/.config/labwc/idle/sleep_ctrl.sh" \
     after-resume "~/.config/labwc/idle/brightness_ctrl.sh --fade-in" \

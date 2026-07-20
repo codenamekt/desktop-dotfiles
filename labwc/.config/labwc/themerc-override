@@ -1,59 +1,60 @@
-# ------------------
-# General Settings
-# ------------------
+# Catppuccin Mocha - locked dark palette for titlebar/menu/OSD
+# NOTE: do not reintroduce the word "General" above, or toggle-theme.sh
+# will treat this file as matugen-owned and overwrite it on next run.
+
 border.width: 1
 border.color: #313244
 padding.height: 4
 corner.radius: 8
-window.titlebar.padding.height: 4
-window.titlebar.padding.width: 6
+window.titlebar.padding.height: 2
+window.titlebar.padding.width: 5
 window.label.text.justify: center
 
-# --------------------
 # Buttons
-# ---------------------
 window.button.height: 20
 window.button.width: 28
-window.button.spacing: 2
+window.button.spacing: 0
 
-# ---------------------
+# Catppuccin Mocha per-button glyph colors
+#   iconify (-): green   #a6e3a1
+#   max     (□): yellow  #f9e2af
+#   close   (×): red     #f38ba8
+window.active.button.iconify.unpressed.image.color: #a6e3a1
+window.active.button.max.unpressed.image.color:     #f9e2af
+window.active.button.close.unpressed.image.color:   #f38ba8
+window.inactive.button.iconify.unpressed.image.color: #a6e3a1
+window.inactive.button.max.unpressed.image.color:     #f9e2af
+window.inactive.button.close.unpressed.image.color:   #f38ba8
+
 # Active Window
-# ---------------------
 window.active.title.bg.color: #1e1e2e
 window.active.label.text.color: #cdd6f4
 
-
-# ----------------------
 # Inactive Window
-# ----------------------
 window.inactive.title.bg.color: #181825
 window.inactive.label.text.color: #a6adc8
 
-# -----------------------
 # Menu
-# -----------------------
-menu.items.bg.color: #1e1e2ee6
+menu.items.bg.color: #1e1e2e
 menu.items.text.color: #cdd6f4
-menu.items.active.bg.color: #cba6f7
-menu.items.active.text.color: #11111b
+menu.items.active.bg.color: #45475a
+menu.items.active.text.color: #cdd6f4
 menu.border.width: 1
 menu.border.color: #313244
 menu.separator.width: 1
 menu.separator.padding.width: 6
 menu.separator.padding.height: 3
 menu.separator.color: #313244
-menu.items.padding.x: 8
-menu.items.padding.y: 6
+menu.items.padding.x: 6
+menu.items.padding.y: 4
 menu.width.min: 140
 menu.width.max: 300
 menu.overlap.x: -4
 menu.overlap.y: 0
 
-# ----------------------------
 # On-Screen Display (OSD)
-# ----------------------------
-osd.bg.color: #1e1e2ee6
-osd.label.text.color: #cdd6f4
+osd.bg.color: #1e1e2e
+osd.label.text.color: #cba6f7
 osd.border.width: 1
 osd.window-switcher.width: 800
 osd.window-switcher.padding: 8
@@ -65,5 +66,5 @@ osd.window-switcher.preview.border.color: #cba6f7
 osd.workspace-switcher.boxes.width: 150
 osd.workspace-switcher.boxes.height: 40
 osd.workspace-switcher.boxes.border.width: 1
-snapping.overlay.edge.bg.color: #cba6f780
-snapping.overlay.region.bg.color: #cba6f780
+snapping.overlay.edge.bg.color: #cba6f7
+snapping.overlay.region.bg.color: #cba6f7

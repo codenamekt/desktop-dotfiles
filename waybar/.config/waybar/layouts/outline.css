@@ -28,68 +28,34 @@ tooltip label {
 #custom-data-monitor,
 #clock,
 #custom-clock,
-#network,
 #custom-todo,
 #memory,
+#cpu,
 #custom-clip,
 #custom-snip,
 #custom-taskmanager,
 #custom-theme-switcher,
 #tray,
-#idle_inhibitor,
 #custom-power,
 #custom-notification,
-#custom-launcher {
-    background: @module_bg;
-    color: @module_fg;
-    padding: 0px 10px;
-    margin: 2px 2px 2px 2px;
-    border: 2px solid transparent; 
-    border-radius: 8px;
-    transition: all 0.3s ease;
-}
-
-/* --- Modules: Strip --- */
-#backlight,
-#pulseaudio,
+#custom-launcher,
 #custom-firefox,
 #custom-terminal,
 #custom-code,
 #custom-music,
 #custom-thunar,
-#custom-timer,
-#custom-countdown {
+#pulseaudio {
     background: @module_bg;
     color: @module_fg;
     padding: 0px 10px;
-    margin-top: 2px;
-    margin-bottom: 2px;
-    margin-right: 0px;
+    margin: 2px 2px 2px 2px;
     border: 2px solid transparent;
-    border-radius: 0;
+    border-radius: 8px;
     transition: all 0.3s ease;
 }
 
 #custom-notification {
    padding-left: 6px;
-}
-
-#custom-countdown {
-    margin-left: 2px;
-}
-
-#pulseaudio,
-#custom-firefox,
-#custom-timer {
-    margin-left: 4px;
-    border-radius: 8px 0 0 8px;
-}
-
-#backlight,
-#custom-thunar,
-#custom-countdown {
-    margin-right: 4px;
-    border-radius: 0 8px 8px 0;
 }
 
 #custom-launcher {
@@ -100,40 +66,30 @@ tooltip label {
 #tray {
     background: @tray;
 }
-
-#custom-power,
-#custom-timer.paused {
-    color: @power;
-}
 #keyboard-state {
     background: transparent;
 }
 
 #keyboard-state label.locked {
     background: @special;
-    color: @module_fg; 
+    color: @module_fg;
     padding: 0px 10px;
     margin: 2px 2px 2px 2px;
     border-radius: 8px;
-}
-#network.disconnected,
-#network.disabled {
-    color: @power; 
 }
 
 /* --- Hover Effects --- */
 #custom-data-monitor:hover,
 #clock:hover,
 #custom-clock:hover,
-#network:hover,
 #backlight:hover,
 #pulseaudio:hover,
 #memory:hover,
+#cpu:hover,
 #custom-clip:hover,
 #custom-snip:hover,
 #custom-taskmanager:hover,
 #custom-theme-switcher:hover,
-#idle_inhibitor:hover,
 #custom-firefox:hover,
 #custom-terminal:hover,
 #custom-code:hover,
@@ -144,17 +100,20 @@ tooltip label {
     border-color: @hover_bg;
 }
 
+/* Right-side accent: Catppuccin Mocha Green for the standalone-icon + cpu/ram cluster */
+#memory:hover,
+#cpu:hover,
+#custom-clip:hover,
+#custom-snip:hover,
+#pulseaudio:hover {
+    color: #a6e3a1;                          /* Catppuccin Mocha Green (text/icon) */
+    border-color: alpha(#a6e3a1, 0.6);       /* Catppuccin Mocha Green (border, translucent) */
+}
+
 #custom-launcher:hover {
     color: @module_fg;
     border-color: @hover_bg;
 }
-
-#custom-todo:hover,
-#custom-countdown:hover,
-#custom-timer:hover {
-    border-color: @special;
-}
-
 
 #custom-power:hover {
     color: @power;
@@ -187,44 +146,9 @@ tooltip label {
     border-bottom-color: alpha(@hover_bg, 0.65);
 }
 
-
-/* -----------------------------------------------------------------------------
- * STATUS & ALERTS
- * -------------------------------------------------------------------------- */
-
-#custom-timer {
-    font-family: "JetBrainsMono Nerd Font", monospace;
-    font-weight: bold;
-}
-#custom-timer.running {
-    color: @primary;
-}
-#custom-timer.running:hover {
-    border-color: @hover_bg;
-}
-#custom-timer.paused {
-    color: @power;
-}
-
 /* Pending Tasks */
 #custom-todo.pending {
     color: @power;
-}
-#custom-todo.pending:hover,
-#custom-timer.paused:hover {
-    border-color: @power;
-}
-
-/* Critical Animations */
-#custom-timer.expired,
-#custom-countdown.expired {
-    border-color: @power;
-    color: @power;            
-    animation-name: blink-critical-outline;
-    animation-duration: 2s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
 }
 
 @keyframes blink-critical-outline {
@@ -244,11 +168,23 @@ tooltip label {
 /* Custom launcher & shortcut sizes */
 #custom-launcher {
     font-size: 18px;
+    padding: 0px 10px 0px 2px;
 }
 #custom-firefox,
 #custom-terminal,
-#custom-code,
-#custom-music,
 #custom-thunar {
+    font-size: 18px;
+    padding: 0px 10px 0px 2px;   /* 4px left + 4px on the right of base = 8px right, keeps icon visually centered */
+}
+#custom-code {
+    font-size: 18px;
+    padding: 0px 8px 0px 4px;
+}
+
+/* Right-side standalone-icon buttons */
+#custom-clip,
+#custom-snip,
+#pulseaudio,
+#custom-power {
     font-size: 18px;
 }
