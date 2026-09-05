@@ -1,0 +1,38 @@
+#!/bin/bash
+# session-restore-daemon — snapshot daemon with plugin-aware lifecycle.
+#
+# Runs the hypr-session-restore daemon (save every 60 s) and self-terminates
+# shortly after the session-restore plugin is disabled, keeping the whole
+# feature toggleable with `omarchy plugin disable/enable session-restore`.
+# Also removes its pidfile on exit so a stale pid can never block a restart.
+set -u
+
+DIR="$(cd "$(dirname "$0")" && pwd)"
+SCRIPT="$DIR/hypr-session-restore"
+STATE_DIR="${HYPR_SESSION_DIR:-$HOME/.local/state/hypr-session-restore}"
+PIDFILE="$STATE_DIR/daemon.pid"
+CHECK_INTERVAL=20
+
+mkdir -p "$STATE_DIR"
+echo "$$" > "$PIDFILE"
+
+"$SCRIPT" daemon &
+DAEMON_PID=$!
+
+cleanup() {
+  kill "$DAEMON_PID" 2>/dev/null
+  rm -f "$PIDFILE"
+  exit 0
+}
+trap cleanup TERM INT
+
+while kill -0 "$DAEMON_PID" 2>/dev/null; do
+  sleep "$CHECK_INTERVAL"
+  if ! jq -e '.plugins | any(.id == "session-restore")' "$HOME/.config/omarchy/shell.json" 2>/dev/null; then
+    # plugin disabled — stop saving so the feature is fully off
+    cleanup
+  fi
+done
+
+rm -f "$PIDFILE"
+exit 0

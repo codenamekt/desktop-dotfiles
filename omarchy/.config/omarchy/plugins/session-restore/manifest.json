@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "session-restore",
+  "name": "Session Restore",
+  "version": "1.0.0",
+  "author": "codenamekt",
+  "description": "macOS-style reopen-windows-on-login for Hyprland. Snapshots your windows (workspace, position, app) and restores them on the next login; a daemon keeps the snapshot fresh every 60 s. Powered by hypr-session-restore.",
+  "kinds": [
+    "service"
+  ],
+  "keepLoaded": true,
+  "entryPoints": {
+    "service": "Service.qml"
+  }
+}

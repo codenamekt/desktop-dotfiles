@@ -12,3 +12,7 @@ __pycache__/
 **/pin_state.json
 **/alarm_daemon.pid
 **/monitor.pid
+*.bak*
+*.orig
+**/agents/
+**/omarchy/agents/

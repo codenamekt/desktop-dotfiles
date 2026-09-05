@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# Re-link collectors and assets after `omarchy update`
+set -euo pipefail
+
+OMARCHY_PATH="${OMARCHY_PATH:-/usr/share/omarchy}"
+SOURCE_DIR="${HOME}/.local/bin"
+ASSET_DIR="${HOME}/.local/share/omarchy/agent-assets"
+
+collectors=(
+  omarchy-agent-usage-openrouter
+  omarchy-agent-usage-deepseek
+  omarchy-agent-usage-minimax
+  omarchy-agent-usage-antigravity
+)
+
+for collector in "${collectors[@]}"; do
+  src="${SOURCE_DIR}/${collector}"
+  dst="${OMARCHY_PATH}/bin/${collector}"
+  if [[ -x "${src}" ]]; then
+    ln -sf "${src}" "${dst}"
+  fi
+done
+
+if [[ -d "${ASSET_DIR}" ]]; then
+  cp "${ASSET_DIR}"/*.svg "${OMARCHY_PATH}/shell/plugins/agents/assets/" 2>/dev/null || true
+fi
