@@ -1,0 +1,79 @@
+#!/bin/bash
+# ~/.config/omarchy/hooks/theme-set.d/pi-sync
+#
+# Sync the active Omarchy theme to pi as the `omarchy-system` theme so that
+# pi's running TUI hot-reloads whenever you change Omarchy themes.
+#
+# Called by `omarchy-hook theme-set <theme_name>` after a theme switch.
+#
+# Behavior:
+#   1. If the active theme ships its own `pi.json`, copy it verbatim.
+#   2. Otherwise, generate one from `colors.toml` using
+#      `omarchy-generate-pi-theme` (which adapts to dark vs light mode).
+#   3. Write atomically into ~/.pi/agent/themes/omarchy-system.json so the
+#      running pi picks it up via its file watcher.
+#   4. Ensure ~/.pi/agent/settings.json has `"theme": "omarchy-system"`.
+#
+# Idempotent and safe to run repeatedly. Skipped silently when the pi agent
+# directory has not been created yet.
+
+set -euo pipefail
+
+THEME_NAME="${1:-}"
+THEME_PATH="$HOME/.local/state/omarchy/current/theme"
+COLORS_TOML="$THEME_PATH/colors.toml"
+PI_SOURCE="$THEME_PATH/pi.json"
+PI_AGENT_DIR="$HOME/.pi/agent"
+PI_THEME_DIR="$PI_AGENT_DIR/themes"
+PI_THEME_PATH="$PI_THEME_DIR/omarchy-system.json"
+PI_SETTINGS_PATH="$PI_AGENT_DIR/settings.json"
+
+# Skip if pi agent dir doesn't exist yet (first run before pi has launched).
+[[ -d $PI_AGENT_DIR ]] || exit 0
+
+# Skip if no colors.toml (theme never staged).
+[[ -f $COLORS_TOML ]] || exit 0
+
+mkdir -p "$PI_THEME_DIR"
+
+# Generate (or copy) the new theme content to a temp file, then atomically
+# rename it onto the live path. This makes the watcher reload see a single
+# fresh mtime/inode pair instead of a half-written file.
+tmp=$(mktemp "$PI_THEME_PATH.XXXXXX")
+trap 'rm -f "$tmp"' EXIT
+
+if [[ -f $PI_SOURCE ]] && jq -e '.name == "omarchy-system" and (.colors | keys | length) >= 53' "$PI_SOURCE" >/dev/null 2>&1; then
+  # Theme ships a *curated*, complete pi.json - copy it verbatim so hand-tuned
+  # colors win over what we would synthesize from colors.toml.
+  cp "$PI_SOURCE" "$tmp"
+else
+  # No bundled pi.json - synthesize one from colors.toml.
+  if ! omarchy-generate-pi-theme "$COLORS_TOML" >"$tmp" 2>/dev/null; then
+    echo "pi-sync: theme-set hook could not generate pi theme from $COLORS_TOML" >&2
+    exit 0
+  fi
+  # Sanity-check the generator output before swapping it in.
+  if ! jq -e '.name == "omarchy-system" and (.colors | keys | length) >= 53' "$tmp" >/dev/null 2>&1; then
+    echo "pi-sync: generated theme failed validation, leaving previous theme in place" >&2
+    exit 0
+  fi
+fi
+
+mv -f "$tmp" "$PI_THEME_PATH"
+trap - EXIT
+
+# Ensure settings.json points to the generated theme (only touch the `theme`
+# key so user model/provider/extension choices are preserved).
+if [[ -f $PI_SETTINGS_PATH ]]; then
+  settings_tmp=$(mktemp "$PI_SETTINGS_PATH.XXXXXX")
+  if jq --arg t "omarchy-system" '.theme = $t' "$PI_SETTINGS_PATH" >"$settings_tmp" 2>/dev/null; then
+    mv -f "$settings_tmp" "$PI_SETTINGS_PATH"
+  else
+    rm -f "$settings_tmp"
+  fi
+else
+  mkdir -p "$PI_AGENT_DIR"
+  printf '{"theme":"omarchy-system"}\n' >"$PI_SETTINGS_PATH"
+fi
+
+# Quiet success - the running pi will pick up the file change on its own.
