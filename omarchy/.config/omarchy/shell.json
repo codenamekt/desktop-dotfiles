@@ -19,11 +19,17 @@
       ],
       "center": [
         {
-          "id": "omarchy.indicators"
+          "id": "codenamekt.indicators",
+          "items": [
+            "ScreenRecording",
+            "Reminder",
+            "Dnd",
+            "StayAwake"
+          ]
         },
         {
           "id": "omarchy.clock",
-          "format": "dddd HH:mm",
+          "format": "ddd d MMM HH:mm",
           "formatAlt": "d MMMM 'W'ww yyyy",
           "verticalFormat": "HH\n—\nmm"
         },
@@ -31,15 +37,26 @@
           "id": "omarchy.keyboard-layout"
         },
         {
-          "id": "omarchy.weather"
+          "id": "codenamekt.weather"
         },
         {
-          "id": "omarchy.system-update"
+          "id": "codenamekt.system-update"
         }
       ],
       "right": [
         {
           "id": "omarchy.tray"
+        },
+        {
+          "id": "robzolkos.github",
+          "includeContributions": true,
+          "linkBehavior": "Browser tab"
+        },
+        {
+          "id": "quickshell.spotify"
+        },
+        {
+          "id": "omamail"
         },
         {
           "id": "omarchy.agents",
@@ -77,7 +94,7 @@
           "id": "omarchy.audio"
         },
         {
-          "id": "omarchy.monitor"
+          "id": "codenamekt.monitor"
         },
         {
           "id": "omarchy.power"
