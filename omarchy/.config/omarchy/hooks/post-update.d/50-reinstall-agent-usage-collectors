@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
-# Re-link collectors and assets after `omarchy update`
+# Re-link collectors and assets after `omarchy update`. Idempotent.
+# Exits 0 silently when nothing needs doing, even if /usr/share/omarchy is
+# root-owned and we can't write to it — never fails the parent update.
 set -euo pipefail
 
 OMARCHY_PATH="${OMARCHY_PATH:-/usr/share/omarchy}"
 SOURCE_DIR="${HOME}/.local/bin"
 ASSET_DIR="${HOME}/.local/share/omarchy/agent-assets"
+BIN_DIR="${OMARCHY_PATH}/bin"
+ASSET_DST_DIR="${OMARCHY_PATH}/shell/plugins/agents/assets"
 
 collectors=(
   omarchy-agent-usage-openrouter
@@ -13,14 +17,61 @@ collectors=(
   omarchy-agent-usage-antigravity
 )
 
+# True when /usr/share/omarchy/bin is not writable by the current user.
+bin_is_root_owned () { [[ ! -w "$BIN_DIR" ]]; }
+
+# Detect whether any collector symlink is missing or points to the wrong source.
+needs_fix=0
 for collector in "${collectors[@]}"; do
   src="${SOURCE_DIR}/${collector}"
-  dst="${OMARCHY_PATH}/bin/${collector}"
-  if [[ -x "${src}" ]]; then
-    ln -sf "${src}" "${dst}"
+  dst="${BIN_DIR}/${collector}"
+  [[ -x "${src}" ]] || continue
+  if [[ ! -L "${dst}" || "$(readlink "${dst}")" != "${src}" ]]; then
+    needs_fix=1
+    break
   fi
 done
 
-if [[ -d "${ASSET_DIR}" ]]; then
-  cp "${ASSET_DIR}"/*.svg "${OMARCHY_PATH}/shell/plugins/agents/assets/" 2>/dev/null || true
+# Also detect missing SVG assets (cosmetic, but worth catching).
+if (( needs_fix == 0 )) && [[ -d "${ASSET_DIR}" ]]; then
+  for svg in "${ASSET_DIR}"/*.svg; do
+    [[ -f "${svg}" ]] || continue
+    name="$(basename "${svg}")"
+    [[ -f "${ASSET_DST_DIR}/${name}" ]] || { needs_fix=1; break; }
+  done
+fi
+
+if (( needs_fix == 0 )); then
+  exit 0
+fi
+
+# Collectors need a source to link from. Bail silently if the user never installed any.
+have_source=0
+for collector in "${collectors[@]}"; do
+  [[ -x "${SOURCE_DIR}/${collector}" ]] && { have_source=1; break; }
+done
+if (( have_source == 0 )); then
+  exit 0
+fi
+
+if bin_is_root_owned; then
+  cat >&2 <<EOF
+omarchy update: ${BIN_DIR} is root-owned; cannot relink custom agent-usage collectors
+(${collectors[*]}).
+Run \`omarchy-agent-usage-update\` or restore the symlinks with sudo, then this hook
+will go quiet on subsequent updates.
+EOF
+  exit 0
+fi
+
+# We can write to BIN_DIR — do the work.
+for collector in "${collectors[@]}"; do
+  src="${SOURCE_DIR}/${collector}"
+  dst="${BIN_DIR}/${collector}"
+  [[ -x "${src}" ]] || continue
+  ln -sf "${src}" "${dst}"
+done
+
+if [[ -d "${ASSET_DIR}" && -w "${ASSET_DST_DIR}" ]]; then
+  cp -n "${ASSET_DIR}"/*.svg "${ASSET_DST_DIR}/" 2>/dev/null || true
 fi
