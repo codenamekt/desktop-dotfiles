@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Re-apply Omarchy agents-panel button-label overrides after `omarchy update`.
+# omarchy update restores /usr/share/omarchy/shell/plugins/agents/Panel.qml
+# to upstream defaults; this hook re-applies our user-facing label overrides.
+# Exits 0 always — never breaks the parent `omarchy update`.
+set -euo pipefail
+
+PATCH="$HOME/.config/omarchy/hooks/patches/agents-panel-labels.py"
+
+[[ -f "$PATCH" ]] || { echo "agents-panel-labels: patch script missing: $PATCH" >&2; exit 0; }
+
+if ! command -v sudo >/dev/null 2>&1; then
+  echo "agents-panel-labels: sudo unavailable; run: sudo python3 $PATCH" >&2
+  exit 0
+fi
+
+if ! sudo -n true 2>/dev/null; then
+  echo "agents-panel-labels: sudo not passwordless; run: sudo python3 $PATCH" >&2
+  exit 0
+fi
+
+sudo -n python3 "$PATCH"
