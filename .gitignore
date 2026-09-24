@@ -16,3 +16,6 @@ __pycache__/
 *.orig
 **/agents/
 **/omarchy/agents/
+
+# omarchy plugins are installed clones with their own .git; manage them with omarchy, not here
+**/omarchy/plugins/

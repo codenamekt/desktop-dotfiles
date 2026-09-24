@@ -27,3 +27,12 @@
 -- o.bind("SUPER + SHIFT + S", nil, "omarchy-capture-screenshot")
 -- o.bind("SUPER + H", nil, "voxtype record toggle")
 -- o.bind("SUPER + PERIOD", nil, "omarchy-shell shell toggle omarchy.emojis")
+
+-- Remote desktop / VM passthrough submap (e.g. Omacloud / VNC / VMs)
+-- Press SUPER + F10 to suspend all local Omarchy shortcuts and forward everything into the remote desktop.
+-- Press SUPER + F10 again to return to local Omarchy control.
+o.bind("SUPER + F10", "Enter remote passthrough mode", hl.dsp.submap("passthrough"))
+
+hl.define_submap("passthrough", function()
+  hl.bind("SUPER + F10", hl.dsp.submap("reset"), { description = "Exit remote passthrough mode" })
+end)
